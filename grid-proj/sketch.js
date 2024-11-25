@@ -50,11 +50,15 @@ function setup() {
 function draw() {
   background(220);
   if (click === true){
+    // Spawns in the player
     gridOne[player.y][player.x] = PLAYER_TILE;
     gridOne[enemy.y][enemy.x] = FALLING_TILE;
+    // Displays the grid
     displayGridOne();
+    // moves the enemy
     autoMoveEnemy();
     gridChangeOne = true;
+    // Shows the frames counting up text
     fill("black");
     textSize(30);
     text(frameCount, 800, 100);
@@ -67,18 +71,19 @@ function draw() {
 
 function keyPressed(){
   if (click === true){
+    // Moves up
     if (key === "w"){
       movePlayer(player.x, player.y - 1);
     }
-  
+    // Moves right
     if (key === "a"){
       movePlayer(player.x - 1, player.y);
     }
-  
+    // Moves down
     if (key === "s"){
       movePlayer(player.x, player.y + 1);
     }
-  
+    // Moves left
     if (key === "d"){
       movePlayer(player.x + 1, player.y);
     }
@@ -86,12 +91,14 @@ function keyPressed(){
 }
 
 function autoMoveEnemy() {
+  // This is the losing screen
   if (player.x === enemy.x && player.y === enemy.y + 1){
     background(220);
     fill("black");
     text("you lose, press F5 to restart", width/2, height/2);
     quit();
   }
+  // if the tickRate = 0, it goes as fast as it orignially does
   if (frameCount % tickRate === 0){
     if (enemy.y >= 9){
       tickRate -= 5;
