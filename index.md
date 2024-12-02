@@ -13,6 +13,8 @@
 - [Fireworks OOP](fireworks-oop)
 - [Connected Nodes OOP](nodes)
 - [Collide 2D](collide)
+- [:ocal STorage Demo](21-local)
+
 ## Projects
 - [Interactive Scene](interactive-scene)
 - [Arrays and Notations](notation)
