@@ -1,6 +1,7 @@
 //make a kind of maze game, hardcode a maze
 //Make a mini game thingy
 // use windowResized(windowHeight)
+// height over 2
 
 let screen = true;
 let gridChangeOne;
@@ -92,13 +93,13 @@ function keyPressed(){
 
 function autoMoveEnemy() {
   // This is the losing screen
+  // if the tickRate = 0, it goes as fast as it orignially does
   if (player.x === enemy.x && player.y === enemy.y + 1){
     background(220);
     fill("black");
     text("you lose, press F5 to restart", width/2, height/2);
     quit();
   }
-  // if the tickRate = 0, it goes as fast as it orignially does
   if (frameCount % tickRate === 0){
     if (enemy.y >= 9){
       tickRate -= 5;
@@ -152,23 +153,23 @@ function displayGridOne(){
       for (let x = 0; x < GRID_SIZE; x++){
         if (gridOne[y][x] === IMPASSIBLE_TILE) {
           fill("black");
-          square(x * cellSize, y * cellSize, cellSize);
+          square(x * cellSize, y * cellSize + height/2, cellSize);
         }
         else if(gridOne[y][x] === OPEN_TILE){
           fill("white");
-          square(x * cellSize, y * cellSize, cellSize);
+          square(x * cellSize, y * cellSize + height/2, cellSize);
         }
         else if(gridOne[y][x] === PLAYER_TILE){
           fill("red");
-          square(x * cellSize, y * cellSize, cellSize);
+          square(x * cellSize, y * cellSize + height/2, cellSize);
         }
         else if(gridOne[y][x] === FALLING_TILE){
           fill("blue");
-          square(x * cellSize, y * cellSize, cellSize);
+          square(x * cellSize, y * cellSize + height/2, cellSize);
         }
         else if(grid[y][x] === HIT_TILE){
           fill("yellow");
-          square(x * cellSize, y * cellSize, cellSize);
+          square(x * cellSize, y * cellSize + height/2, cellSize);
         }
       }
     }
